@@ -8,7 +8,7 @@
 
 ## العرض التقديمي
 
-- [فتح العرض التقديمي العربي](presentation_arabic_slides.html)
+- [فتح العرض التقديمي العربي](https://mdqi1.github.io/PolarCommunityInstaller/)
 
 ## ملاحظة
 
