@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polar Community</title>
+  <style>
+    :root {
+      --bg: #0f1012;
+      --panel: #17191d;
+      --text: #f7f8fb;
+      --muted: #b7bec9;
+      --accent: #25a7bd;
+      --line: rgba(255,255,255,0.1);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Tajawal", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(37, 167, 189, 0.18), transparent 26%),
+        radial-gradient(circle at bottom left, rgba(12, 88, 103, 0.22), transparent 22%),
+        var(--bg);
+    }
+    .wrap {
+      width: min(1120px, calc(100vw - 40px));
+      margin: 30px auto 60px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+    }
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(37, 167, 189, 0.14);
+      color: #a6edf8;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    h1 {
+      margin: 0 0 16px;
+      font-size: 54px;
+      line-height: 1.08;
+    }
+    p.lead {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 21px;
+      line-height: 1.8;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid var(--line);
+    }
+    .button.primary {
+      background: var(--accent);
+      color: #071114;
+      border-color: transparent;
+    }
+    .button.secondary {
+      background: transparent;
+      color: var(--text);
+    }
+    .preview {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 16px;
+    }
+    .preview img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+    }
+    .section {
+      margin-top: 28px;
+      padding: 28px 30px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+    }
+    .section h2 {
+      margin: 0 0 18px;
+      font-size: 32px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 17px;
+    }
+    .note {
+      margin-top: 14px;
+      color: rgba(255,255,255,0.52);
+      font-size: 14px;
+    }
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <div class="badge">Polar Community</div>
+        <h1>تحميل التطبيق ومشاهدة العرض التقديمي</h1>
+        <p class="lead">
+          هذه الصفحة مخصصة لتوزيع التطبيق النهائي للمستخدمين، مع ملف التنزيل المباشر ونسخة عرض تقديمي عربية تشرح خطوات التطبيق ووظائفه.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="downloads/PolarCommunityInstaller.exe">تنزيل التطبيق EXE</a>
+          <a class="button secondary" href="presentation_arabic_slides.html">فتح العرض التقديمي</a>
+        </div>
+        <div class="note">يمكن استخدام هذه الصفحة مباشرة عبر GitHub Pages بدون نشر السورس كود.</div>
+      </div>
+      <div class="preview">
+        <img src="presentation_assets/01-main-home.png" alt="واجهة التطبيق">
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>أهم الوظائف</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>تثبيت Polar</h3>
+          <p>بدء تثبيت Polar بخطوات واضحة مع نافذة تأكيد وشريط تقدم مرئي.</p>
+        </div>
+        <div class="card">
+          <h3>تثبيت Millennium</h3>
+          <p>يتفعل بعد نجاح Polar ويعرض حالة الجلب والتنزيل والاستخراج والتحقق.</p>
+        </div>
+        <div class="card">
+          <h3>الإزالة وإعادة فتح Steam</h3>
+          <p>إزالة الملفات المطلوبة ثم إعادة تشغيل Steam تلقائياً بعد اكتمال العملية.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

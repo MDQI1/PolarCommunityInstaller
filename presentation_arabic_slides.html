@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عرض Polar Community</title>
+  <style>
+    :root {
+      --bg: #0f1012;
+      --panel: #17191d;
+      --panel-soft: #1d2025;
+      --text: #f5f7fb;
+      --muted: #b8c0cc;
+      --accent: #24a3ba;
+      --accent-soft: #0f6f84;
+      --line: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(36, 163, 186, 0.2), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(15, 111, 132, 0.18), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Tajawal", "Segoe UI", sans-serif;
+    }
+
+    .deck {
+      width: min(1200px, calc(100vw - 48px));
+      margin: 32px auto 64px;
+      display: grid;
+      gap: 28px;
+    }
+
+    .slide {
+      min-height: 675px;
+      padding: 42px 48px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.33);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: auto -120px -120px auto;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(36,163,186,0.14), transparent 70%);
+      pointer-events: none;
+    }
+
+    .kicker {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(36, 163, 186, 0.14);
+      color: #9ee7f2;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 56px;
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 40px;
+      margin-bottom: 18px;
+    }
+
+    p.lead {
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1.7;
+      max-width: 820px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+      height: 100%;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+    }
+
+    .hero-card img,
+    .frame img {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .bullets {
+      margin-top: 24px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .bullet {
+      padding: 14px 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: var(--text);
+      font-size: 19px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .frame {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 16px;
+    }
+
+    .caption {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .feature {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .feature h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    .mini {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 14px;
+    }
+
+    .mini img {
+      width: 100%;
+      border-radius: 14px;
+      display: block;
+    }
+
+    .mini h3 {
+      margin-top: 12px;
+      font-size: 20px;
+    }
+
+    .mini p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .footer-note {
+      position: absolute;
+      bottom: 28px;
+      left: 48px;
+      color: rgba(255,255,255,0.42);
+      font-size: 14px;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .deck {
+        width: 100%;
+        margin: 0;
+        gap: 0;
+      }
+
+      .slide {
+        box-shadow: none;
+        border-radius: 0;
+        border: none;
+        page-break-after: always;
+        min-height: 100vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide">
+      <div class="hero">
+        <div>
+          <div class="kicker">عرض تقديمي عربي</div>
+          <h1>Polar Community</h1>
+          <p class="lead">
+            واجهة مكتبية عربية حديثة لتثبيت Polar و Millennium وإدارتها بسهولة، مع نوافذ مخصصة، شريط تقدم واضح، وتجربة استخدام مباشرة للمستخدم.
+          </p>
+          <div class="bullets">
+            <div class="bullet">تثبيت Polar بخطوات واضحة ومؤكدة</div>
+            <div class="bullet">فتح Millennium بعد نجاح الخطوة الأولى</div>
+            <div class="bullet">إزالة الملفات ثم تشغيل Steam تلقائياً</div>
+            <div class="bullet">دعم العربية والإنجليزية داخل التطبيق</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="presentation_assets/01-main-home.png" alt="الواجهة الرئيسية">
+        </div>
+      </div>
+      <div class="footer-note">Polar Community Presentation</div>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">الواجهة الرئيسية</div>
+      <h2>واجهة بسيطة وواضحة للمستخدم</h2>
+      <div class="two-col">
+        <div class="frame">
+          <img src="presentation_assets/01-main-home.png" alt="الواجهة الرئيسية">
+          <div class="caption">الشاشة الرئيسية بعد تشغيل التطبيق</div>
+        </div>
+        <div class="feature-list">
+          <div class="feature">
+            <h3>الشريط العلوي المخصص</h3>
+            <p>يعرض اسم التطبيق، الشعار، خيارات اللغة، وأزرار الإغلاق والتصغير داخل نفس لغة التصميم.</p>
+          </div>
+          <div class="feature">
+            <h3>أزرار العمليات الأساسية</h3>
+            <p>يتضمن التطبيق أزرار تثبيت Polar وتثبيت Millennium والإزالة، مع إبقاء الحالات واضحة للمستخدم.</p>
+          </div>
+          <div class="feature">
+            <h3>شريط التقدم</h3>
+            <p>يوضح المرحلة الحالية من التثبيت أو الإزالة بشكل مباشر وسهل القراءة.</p>
+          </div>
+          <div class="feature">
+            <h3>روابط مساعدة</h3>
+            <p>الوصول إلى المتجر أو ديسكورد من داخل الواجهة نفسها.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">الخطوة الأولى</div>
+      <h2>تأكيد وتنفيذ تثبيت Polar</h2>
+      <div class="grid-2">
+        <article class="mini">
+          <img src="presentation_assets/02-confirm-polar.png" alt="تأكيد تثبيت Polar">
+          <h3>تأكيد العملية</h3>
+          <p>قبل البدء، يظهر مربع تأكيد للمستخدم لضمان تنفيذ الخطوة بإرادته.</p>
+        </article>
+        <article class="mini">
+          <img src="presentation_assets/03-progress-polar.png" alt="تقدم تثبيت Polar">
+          <h3>متابعة التقدم</h3>
+          <p>بعد الموافقة، يبدأ التطبيق بعرض تقدم تثبيت Polar مع وصف مباشر للمرحلة الحالية.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">الخطوة الثانية</div>
+      <h2>فتح وتثبيت Millennium</h2>
+      <div class="grid-2">
+        <article class="mini">
+          <img src="presentation_assets/04-millennium-unlocked.png" alt="فتح زر Millennium">
+          <h3>فتح الزر بعد نجاح Polar</h3>
+          <p>لا يتم تفعيل Millennium إلا بعد اكتمال تثبيت Polar بنجاح، مما يضمن التسلسل الصحيح.</p>
+        </article>
+        <article class="mini">
+          <img src="presentation_assets/05-confirm-millennium.png" alt="تأكيد تثبيت Millennium">
+          <h3>تأكيد التثبيت</h3>
+          <p>يعرض التطبيق نافذة تأكيد مستقلة قبل بدء تثبيت Millennium.</p>
+        </article>
+      </div>
+      <div class="grid-2">
+        <article class="mini">
+          <img src="presentation_assets/06-progress-millennium.png" alt="تقدم تثبيت Millennium">
+          <h3>تنزيل واستخراج الحزمة</h3>
+          <p>يظهر شريط التقدم وحالة التنفيذ أثناء جلب الملفات وفكها والتحقق منها.</p>
+        </article>
+        <article class="mini">
+          <img src="presentation_assets/09-success-dialog.png" alt="نجاح العملية">
+          <h3>إشعار النجاح</h3>
+          <p>بعد الانتهاء، تظهر نافذة نجاح مخصصة تؤكد للمستخدم أن العملية تمت بالشكل المطلوب.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">وظيفة الإزالة</div>
+      <h2>إزالة الملفات ثم إعادة تشغيل Steam</h2>
+      <div class="grid-2">
+        <article class="mini">
+          <img src="presentation_assets/07-confirm-remove.png" alt="تأكيد الإزالة">
+          <h3>تأكيد الإزالة</h3>
+          <p>يحصل المستخدم على رسالة تأكيد قبل بدء حذف الملفات المرتبطة.</p>
+        </article>
+        <article class="mini">
+          <img src="presentation_assets/08-progress-remove.png" alt="تقدم الإزالة">
+          <h3>تنفيذ العملية</h3>
+          <p>يعرض التطبيق تقدم الإزالة ثم يقوم بفتح Steam تلقائياً بعد الانتهاء إذا كان الملف التنفيذي موجوداً.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">الخلاصة</div>
+      <h2>مميزات التطبيق باختصار</h2>
+      <div class="feature-list">
+        <div class="feature">
+          <h3>واجهة عربية احترافية</h3>
+          <p>تعرض جميع المراحل الأساسية بشكل واضح، مع دعم كامل للتبديل بين العربية والإنجليزية.</p>
+        </div>
+        <div class="feature">
+          <h3>تجربة استخدام مباشرة</h3>
+          <p>العمليات الأساسية كلها متاحة من شاشة واحدة: تثبيت Polar، تثبيت Millennium، والإزالة.</p>
+        </div>
+        <div class="feature">
+          <h3>متابعة مرئية لكل خطوة</h3>
+          <p>شريط التقدم ورسائل الحالة والنوافذ المخصصة تساعد المستخدم على معرفة ما يحدث في كل لحظة.</p>
+        </div>
+        <div class="feature">
+          <h3>جاهز للعرض أو الطباعة</h3>
+          <p>يمكن فتح هذا الملف كعرض تقديمي محلي، أو طباعته كصفحات، أو تحويله لاحقاً إلى PDF بسهولة.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
